@@ -3,8 +3,11 @@
 #include<math.h>
 #include<complex.h>
 #include<omp.h>
+<<<<<<< HEAD:main_timing.c
 
 
+=======
+>>>>>>> b12dcc75772427b7d26181cf024e52ed95afb1c6:main.c
 #include<lapacke.h>
 #include<cblas.h>
 
@@ -415,14 +418,25 @@ int main(){
   double tau, totime, lmda;
   double serialTime;
 
+<<<<<<< HEAD:main_timing.c
 
   ncsf = 1000; flqchnl = 3; xmin = 0 ; xmax = 10.0;
   epsln = 0.5; omga = 0.5; 
+=======
+  ncsf =1000; flqchnl = 5; xmin = 0 ; xmax = 10.0;
+  epsln = 0.5; omga = 0.5; lmda = 0.0;
+>>>>>>> b12dcc75772427b7d26181cf024e52ed95afb1c6:main.c
   noptc = 5; istate = 1;           //keep istate as 1, 0 giving wrong result
   
   tau = 2.0*PI/omga;
   totime = noptc*tau;
   ntime = (int)totime;
+<<<<<<< HEAD:main_timing.c
+=======
+  
+  printf("ntime = %d, totime = %lf, tau = %lf\n",ntime, totime, tau);
+  float start=omp_get_wtime();
+>>>>>>> b12dcc75772427b7d26181cf024e52ed95afb1c6:main.c
 
   double startTime = omp_get_wtime();
   timeprop(ncsf, xmin, xmax, flqchnl, noptc, istate, totime, ntime, omga, epsln);
@@ -431,5 +445,7 @@ int main(){
   serialTime = endTime - startTime;
   printf("FINAL time taken by serial = %lf sec\n", serialTime);
 
+  float stop=omp_get_wtime();
+  printf("time taken:%f",stop-start);
   return 0;
 }
